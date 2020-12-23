@@ -1,9 +1,9 @@
 -- IM Project
 
 -- Creating the database
--- CREATE DATABASE GameEon;
+CREATE DATABASE GameEon;
 USE gameeon;
-/*
+
 -- Creating the tables
 -- Table for video game
 
@@ -40,7 +40,6 @@ INSERT INTO videoGame(game_title, developer, publisher, platform, game_status, r
 	'PC, Playstation', 
 	'upcoming', 
 	'2020-12-10 00:00:00');
-*/
 
 
 
