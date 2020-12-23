@@ -51,4 +51,6 @@ SELECT game_title as available_games FROM videogame WHERE game_status = 'availab
 
 -- ETO AY EXAMPLE NG SHOWING NG UPCOMING GAMES!
 SELECT game_title as upcoming_games FROM videogame WHERE game_status = 'upcoming';
+SELECT game_title as upcoming_games FROM videogame WHERE game_status = 'upcoming';
+
 
