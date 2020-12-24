@@ -44,10 +44,18 @@ INSERT INTO videoGame(game_title, developer, publisher, platform, game_status, r
 ), (
     'Slender: The Arrival',
     'Blue Isle Studios',
-    'Blue Isle Studios',
+    'Blue Isle Publishing',
     'PC, Switch, Playstation',
     'removed',
     '2013-10-23',
+    'HORROR01'
+), (
+    'Outlast 2',
+    'Red Barrels',
+    'Red Barrels',
+    'PC, XBox, Mac, Playstation',
+    'available',
+    '2017-04-25',
     'HORROR01'
 ), (
 	'Cyberpunk 2077', 
