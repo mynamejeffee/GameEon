@@ -3,4 +3,5 @@ Video Game Inventory Management System
 
 
 # To-do:
-- Everything.
+- Fix the platforms in videogame database;
+- Everything else.
