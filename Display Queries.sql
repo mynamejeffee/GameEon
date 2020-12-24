@@ -1,3 +1,4 @@
+USE gameeon;
 SELECT * FROM videogame;
 
 -- ETO AY EXAMPLE NG SHOWING NG REMOVED GAMES!
