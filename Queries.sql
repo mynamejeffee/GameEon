@@ -1,4 +1,4 @@
--- IM Project
+-- GAMEEON: A VIDEO GAME INVENTORY MANAGEMENT SYSTEM FOR RETAILERS
 
 -- Creating the database
 -- CREATE DATABASE GameEon;
