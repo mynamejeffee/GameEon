@@ -17,7 +17,7 @@ SELECT game_title as available_games FROM videogame WHERE game_status = 'availab
 
 -- DISPLAYING UPCOMING GAMES
 SELECT game_title as upcoming_games FROM videogame WHERE game_status = 'upcoming';
-SELECT game_title, platform FROM videogame WHERE platform  ('PC', 'Playstation');
+-- SELECT game_title, platform FROM videogame WHERE platform IN ('Playstation');
 
 -- DISPLAYING THE GAME TITLES AND GENRE
 SELECT videogame.game_title game_title, genre.genre_title genre
