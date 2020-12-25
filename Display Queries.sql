@@ -25,3 +25,15 @@ SELECT videogame.game_title game_title, genre.genre_title genre
 	JOIN genre 
 	USING (genre_id)
 	ORDER BY game_title;
+
+SELECT * FROM customer;
+SELECT * FROM reviews;
+
+SELECT customer.username username, videogame.game_title game_title, reviews.review review
+	FROM customer
+	JOIN reviews 
+	USING (review_id)
+	LEFT JOIN videogame
+	USING (game_id)
+	ORDER BY username;
+
