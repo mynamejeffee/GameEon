@@ -2,9 +2,9 @@
 USE gameeon;
 
 INSERT INTO genre(genre_id, genre_title) VALUES 
-    ('SHOOTER1', 'Shooter'),
-    ('HORROR01', 'Horror'),
-    ('CYBERP01', 'Cyberpunk');
+    ('SHOTR', 'Shooter'),
+    ('HRROR', 'Horror'),
+    ('CBPNK', 'Cyberpunk');
 
 -- Inserting the games
 INSERT INTO videoGame(game_title, developer, publisher, platform, game_status, release_date, genre_id) VALUES
@@ -15,7 +15,7 @@ INSERT INTO videoGame(game_title, developer, publisher, platform, game_status, r
     'PC, XBox, Mac',
     'available',
     '2013-09-04',
-    'HORROR01'
+    'HRROR'
 ), (
     'Slender: The Arrival',
     'Blue Isle Studios',
@@ -23,7 +23,7 @@ INSERT INTO videoGame(game_title, developer, publisher, platform, game_status, r
     'PC, Switch, Playstation',
     'removed',
     '2013-10-23',
-    'HORROR01'
+    'HRROR'
 ), (
     'Outlast 2',
     'Red Barrels',
@@ -31,7 +31,7 @@ INSERT INTO videoGame(game_title, developer, publisher, platform, game_status, r
     'PC, XBox, Mac, Playstation',
     'available',
     '2017-04-25',
-    'HORROR01'
+    'HRROR'
 ), (
 	'Cyberpunk 2077', 
 	'CD PROJEKT RED', 
@@ -39,8 +39,8 @@ INSERT INTO videoGame(game_title, developer, publisher, platform, game_status, r
 	'PC, Playstation', 
 	'upcoming', 
 	'2020-12-10',
-	'CYBERP01');
-
+	'CBPNK');
+/*
 -- Inserting customers
 INSERT INTO customer(username, e_mail, billing_info, country, region_state, city, review_id) VALUES
 (
