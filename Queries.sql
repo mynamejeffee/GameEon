@@ -1,24 +1,27 @@
 -- GAMEEON: A VIDEO GAME INVENTORY MANAGEMENT SYSTEM FOR RETAILERS
-/*
+
 -- Creating the database
 -- CREATE DATABASE GameEon;
 USE gameeon;
 
+--SET FOREIGN_KEY_CHECKS = 1;
 
+/*
 -- Creating the tables
+
 CREATE TABLE genre (
 	genre_id varchar(5) PRIMARY KEY,
 	genre_title varchar(255) NOT NULL
 );
 
 
-CREATE TABLE videoGame (
+CREATE TABLE catalogue(
 	game_id serial PRIMARY KEY,
 	game_title varchar(255),
 	developer varchar(255),
 	publisher varchar(255),
-	platform varchar(255),
-	game_status varchar(255),
+	platform SET ('PC', 'Mac', 'Linux', 'XBox', 'Playstation', 'Nintendo_Switch'),
+	game_status ENUM ('available', 'upcoming', 'removed') NOT NULL,
 	release_date DATE,
 	genre_id varchar(5),
 	FOREIGN KEY (genre_id)
@@ -37,12 +40,12 @@ CREATE TABLE customer (
 	FOREIGN KEY (review_id) 
 	REFERENCES reviews(review_id)
 );
-
+*/
 CREATE TABLE reviews (
 	review_id varchar(8) PRIMARY key,
 	stars int(5),
 	review text,
 	game_id serial,
 	FOREIGN KEY (game_id) 
-	REFERENCES videoGame(game_id)
+	REFERENCES catalogue(game_id)
 );
