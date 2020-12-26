@@ -41,33 +41,18 @@ INSERT INTO catalogue(game_title, developer, publisher, platform, game_status, r
 	'upcoming', 
 	'2020-12-10',
 	'CBPNK');
-*/
+*//*
 -- Inserting customers
-
--- Inserting reviews
-INSERT INTO reviews(review_id, stars, review, game_id) VALUES 
-(
-    'REV00001',
-    3,
-    'Eyyyyyyyyyyyyyyyyyyyyyyyyyy this is good!',
-    1
-), (
-    'REV00002',
-    1,
-    'This is awful! I\'d like a refund please!',
-    4
-);
-
-INSERT INTO customer(username, e_mail, billing_info, country, region_state, city, review_id) VALUES
+INSERT INTO customer(username, e_mail, billing_info, country, region_state, city) VALUES
 (
     'my_name_is_jeff',
     'mynmjef@yahoo.com',
     '1234567890123456',
     'Philippines',
-    'Davao',
-    'Maute',
-    'REV00001'
-), (
+    'Davao Region',
+    'Davao City'
+)
+/*, (
     'blahblahblah',
     'bbb@gmail.com',
     '0987654321234567',
@@ -77,3 +62,48 @@ INSERT INTO customer(username, e_mail, billing_info, country, region_state, city
     'REV00002'
 );
 
+/*
+-- Inserting reviews
+INSERT INTO reviews(reviewer_id,stars, review) VALUES 
+(
+    'REV00001',
+    1,
+    'this is trash!!!'
+)
+/*, (
+    'REV00002',
+    1,
+    2,
+    'This is awful! I\'d like a refund please!',
+    4
+);
+
+/*
+INSERT INTO reviews(reviewer_id, review_num, stars, review, game_id) VALUES 
+(
+    'REV00003',
+    2,
+    2,
+    'I like this game!',
+    4
+);
+
+
+INSERT INTO customer_review (customer_id, reviewer_id) VALUES
+(
+    1,
+    'REV00001'
+);
+*/
+INSERT INTO reviews(reviewer_id,stars, review) VALUES 
+(
+    'REV00001',
+    1,
+    'this is trash!!!'
+);
+/*
+INSERT INTO review_game (game_id, reviewer_id) VALUES
+(
+    4,
+    'REV00001'
+);

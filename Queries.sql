@@ -3,17 +3,20 @@
 -- Creating the database
 -- CREATE DATABASE GameEon;
 USE gameeon;
-
---SET FOREIGN_KEY_CHECKS = 1;
-
+--SET FOREIGN_KEY_CHECKS = 0;
+--DROP TABLE category_feat_item;
 /*
 -- Creating the tables
+CREATE TABLE reviews_to_customer(
+	reviewer_id varchar(8),
+	FOREIGN KEY (reviewer_id)
+	REFERENCES reviews(reviewer_id)
+);
 
 CREATE TABLE genre (
 	genre_id varchar(5) PRIMARY KEY,
 	genre_title varchar(255) NOT NULL
 );
-
 
 CREATE TABLE catalogue(
 	game_id serial PRIMARY KEY,
@@ -28,24 +31,38 @@ CREATE TABLE catalogue(
 	REFERENCES genre(genre_id)
 );
 
+
+CREATE TABLE reviews (
+	reviewer_id varchar(8) PRIMARY KEY,
+	stars int(5),
+	review text
+	);
+/*
 CREATE TABLE customer (
 	customer_id serial PRIMARY KEY,
-	username varchar(20),
+	username varchar(20) UNIQUE NOT NULL,
 	e_mail varchar(254),
 	billing_info varchar(16),
 	country varchar(255),
 	region_state varchar(255),
-	city varchar(255),
-	review_id varchar(8),
-	FOREIGN KEY (review_id) 
-	REFERENCES reviews(review_id)
+	city varchar(255)
+);
+
+CREATE TABLE customer_review (
+	customer_id serial,
+	reviewer_id varchar(8),
+	FOREIGN KEY (customer_id) 
+	REFERENCES customer(customer_id),
+	FOREIGN KEY (reviewer_id) 
+	REFERENCES reviews(reviewer_id)
+);
+
+CREATE TABLE review_game (
+	game_id serial,
+	reviewer_id varchar(8),
+	FOREIGN KEY (game_id) 
+	REFERENCES catalogue(game_id),
+	FOREIGN KEY (reviewer_id) 
+	REFERENCES reviews(reviewer_id)
 );
 */
-CREATE TABLE reviews (
-	review_id varchar(8) PRIMARY key,
-	stars int(5),
-	review text,
-	game_id serial,
-	FOREIGN KEY (game_id) 
-	REFERENCES catalogue(game_id)
-);
