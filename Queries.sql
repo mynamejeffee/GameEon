@@ -63,7 +63,7 @@ CREATE TABLE customer_review (
 CREATE TABLE reviews(
 	game_instance varchar(5),
 	reviewer_id varchar(8),
-	stars int(5),
+	stars tinyint(1),
 	review text,
 	FOREIGN KEY (game_instance) 
 	REFERENCES game_customer(game_instance),

@@ -21,6 +21,7 @@ SELECT game_title as available_games FROM catalogue WHERE game_status = 'availab
 -- DISPLAYING UPCOMING GAMES
 SELECT game_title as upcoming_games FROM catalogue WHERE game_status = 'upcoming';
 SELECT game_title, platform FROM catalogue WHERE platform LIKE '%Mac%';
+SELECT game_title, platform FROM catalogue WHERE platform LIKE '%PC%' AND platform LIKE '%Playstation%';
 
 SELECT * FROM reviews;
 SELECT * FROM review_game;
@@ -73,3 +74,15 @@ SELECT customer.username, reviews.review, catalogue.game_title
 	INNER JOIN catalogue
 	ON catalogue.game_id = game_customer.game_id
 	ORDER BY username;
+
+SELECT customer.username, reviews.stars, reviews.review, catalogue.game_title
+	FROM reviews
+	INNER JOIN review_game
+	ON review_game.reviewer_id = reviews.reviewer_id
+	INNER JOIN customer
+	ON review_game.customer_id = customer.customer_id
+	INNER JOIN game_customer
+	ON game_customer.game_instance = reviews.game_instance 
+	INNER JOIN catalogue
+	ON catalogue.game_id = game_customer.game_id
+	ORDER BY stars;
