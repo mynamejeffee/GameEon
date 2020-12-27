@@ -52,58 +52,51 @@ INSERT INTO customer(username, e_mail, billing_info, country, region_state, city
     'Davao Region',
     'Davao City'
 )
-/*, (
+, (
     'blahblahblah',
     'bbb@gmail.com',
     '0987654321234567',
     'Germany',
     'Berlin',
-    'Berlin',
-    'REV00002'
+    'Berlin'
+
 );
 
-/*
 -- Inserting reviews
-INSERT INTO reviews(reviewer_id,stars, review) VALUES 
+
+INSERT INTO customer_review (cus_rev_id, customer_id, reviewer_id) VALUES
+(
+    1, 1, 'REV00001'
+),
+(
+    2, 2, 'REV00001'
+);
+
+
+INSERT INTO reviews(reviewer_id, customer_id) VALUES 
 (
     'REV00001',
-    1,
-    'this is trash!!!'
-)
-/*, (
+    1
+    
+),(
     'REV00002',
-    1,
-    2,
-    'This is awful! I\'d like a refund please!',
-    4
-);
-
-/*
-INSERT INTO reviews(reviewer_id, review_num, stars, review, game_id) VALUES 
-(
-    'REV00003',
-    2,
-    2,
-    'I like this game!',
-    4
-);
-
-
-INSERT INTO customer_review (customer_id, reviewer_id) VALUES
-(
-    1,
-    'REV00001'
+    2
 );
 */
-INSERT INTO reviews(reviewer_id,stars, review) VALUES 
+INSERT INTO review_game (game_id, reviewer_id, stars, review) VALUES
 (
-    'REV00001',
+    3,
+    'REV00002',
     1,
-    'this is trash!!!'
-);
-/*
-INSERT INTO review_game (game_id, reviewer_id) VALUES
-(
+    'this is a bad game'
+);/*, (
+    2, 
+    'REV00001',
+    2,
+    'I hate this game!!'
+), (
+    3,
+    'REV00002',
     4,
-    'REV00001'
+    'THIS IS THE BEST GAME!'
 );
