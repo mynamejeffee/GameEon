@@ -31,21 +31,22 @@ SELECT catalogue.game_title game_title, genre.genre_title genre
 	USING (genre_id)
 	ORDER BY game_title;
 
-SELECT customer.username, review_game.review
+-- // THIS IS THE END POINT
+SELECT customer.username, reviews.review
 	FROM reviews
 	INNER JOIN review_game
-	ON reviews.reviewer_id = review_game.reviewer_id
+	ON review_game.reviewer_id = reviews.reviewer_id
 	INNER JOIN customer
-	ON reviews.customer_id = customer.customer_id;
+	ON review_game.customer_id = customer.customer_id;
 
-SELECT customer.username, review_game.review, catalogue.game_title
+SELECT customer.username, reviews.review, catalogue.game_title
 	FROM reviews
 	INNER JOIN review_game
-	ON reviews.reviewer_id = review_game.reviewer_id
+	ON review_game.reviewer_id = reviews.reviewer_id
 	INNER JOIN customer
-	ON reviews.customer_id = customer.customer_id
+	ON review_game.customer_id = customer.customer_id
 	INNER JOIN catalogue
-	ON catalogue.game_id = review_game.game_id;
+	ON catalogue.game_id = reviews.game_id;
 
 /*
 SELECT customer.username, reviews.review

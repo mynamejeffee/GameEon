@@ -31,8 +31,9 @@ CREATE TABLE catalogue(
 	REFERENCES genre(genre_id)
 );
 
+-- // THIS IS THE END POINT
 
-CREATE TABLE reviews (
+CREATE TABLE review_game (
 	reviewer_id varchar(8) PRIMARY KEY,
 	customer_id serial,
 	FOREIGN KEY (customer_id)
@@ -59,7 +60,7 @@ CREATE TABLE customer_review (
 	REFERENCES reviews(reviewer_id)
 );
 */
-CREATE TABLE review_game (
+CREATE TABLE reviews(
 	game_id serial,
 	reviewer_id varchar(8),
 	stars int(5),
@@ -67,5 +68,5 @@ CREATE TABLE review_game (
 	FOREIGN KEY (game_id) 
 	REFERENCES catalogue(game_id),
 	FOREIGN KEY (reviewer_id) 
-	REFERENCES reviews(reviewer_id)
+	REFERENCES review_game(reviewer_id)
 );

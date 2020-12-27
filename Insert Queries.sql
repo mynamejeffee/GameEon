@@ -72,8 +72,9 @@ INSERT INTO customer_review (cus_rev_id, customer_id, reviewer_id) VALUES
     2, 2, 'REV00001'
 );
 
+--// THIS IS THE END POINT
 
-INSERT INTO reviews(reviewer_id, customer_id) VALUES 
+INSERT INTO review_game(reviewer_id, customer_id) VALUES 
 (
     'REV00001',
     1
@@ -83,18 +84,18 @@ INSERT INTO reviews(reviewer_id, customer_id) VALUES
     2
 );
 */
-INSERT INTO review_game (game_id, reviewer_id, stars, review) VALUES
-(
-    3,
-    'REV00002',
+INSERT INTO reviews(game_id, reviewer_id, stars, review) VALUES
+/*(
     1,
-    'this is a bad game'
-);/*, (
-    2, 
+    'REV00001',
+    4,
+    'good game'
+), (
+    4, 
     'REV00001',
     2,
     'I hate this game!!'
-), (
+),*/ (
     3,
     'REV00002',
     4,
