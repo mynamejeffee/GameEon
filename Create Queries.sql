@@ -72,6 +72,7 @@ CREATE TABLE reviews_to_customer(
 	reviewer_id varchar(8),
 	FOREIGN KEY (reviewer_id)
 	REFERENCES reviews(reviewer_id)
+	test test test
 );
 
 CREATE TABLE customer_review (
