@@ -1,46 +1,7 @@
--- INserting the genres
+-- Inserting the genres
 USE gameeon;
 
-INSERT INTO genre(genre_id, genre_title) VALUES 
-    ('SHOTR', 'Shooter'),
-    ('HRROR', 'Horror'),
-    ('CBPNK', 'Cyberpunk');
-
--- Inserting the games
-INSERT INTO catalogue(game_title, developer, publisher, platform, game_status, release_date, genre_id) VALUES
-(
-    'Outlast',
-    'Red Barrels',
-    'Red Barrels',
-    'PC,Mac,Linux,XBox',
-    'available',
-    '2013-09-04',
-    'HRROR'
-), (
-    'Slender: The Arrival',
-    'Blue Isle Studios',
-    'Blue Isle Publishing',
-    'PC,Playstation,Nintendo_Switch',
-    'removed',
-    '2013-10-23',
-    'HRROR'
-), (
-    'Outlast 2',
-    'Red Barrels',
-    'Red Barrels',
-    'PC,Mac,XBox,Playstation',
-    'available',
-    '2017-04-25',
-    'HRROR'
-), (
-	'Cyberpunk 2077', 
-	'CD PROJEKT RED', 
-	'CD PROJEKT RED', 
-	'PC,Playstation', 
-	'upcoming', 
-	'2020-12-10',
-	'CBPNK');
-
+/*
 -- Inserting customers
 INSERT INTO customer(username, e_mail, billing_info, country, region_state, city) VALUES
 (
