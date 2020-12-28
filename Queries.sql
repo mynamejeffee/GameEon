@@ -1,17 +1,18 @@
 -- GAMEEON: A VIDEO GAME INVENTORY MANAGEMENT SYSTEM FOR RETAILERS
 
--- Creating the database
+-- CREATING THE DATABASE
 -- CREATE DATABASE GameEon;
 USE gameeon;
 --SET FOREIGN_KEY_CHECKS = 0;
---DROP TABLE catalogue;;
+--DROP TABLE customer;
 
--- Creating the tables
+-- CREATING THE GENRE TABLE:
 CREATE TABLE genre (
 	genre_id varchar(5) PRIMARY KEY,
 	genre_title varchar(255) NOT NULL
 );
-/*
+
+-- CREATING THE CATALOGUE TABLE:
 CREATE TABLE catalogue(
 	game_id serial PRIMARY KEY,
 	game_title varchar(255),
@@ -26,7 +27,7 @@ CREATE TABLE catalogue(
 );
 
 -- // THIS IS THE END POINT
-
+-- CREATING THE REVIEW_GAME JUNCTION TABLE:
 CREATE TABLE review_game (
 	reviewer_id varchar(8) PRIMARY KEY,
 	customer_id serial,
@@ -34,6 +35,7 @@ CREATE TABLE review_game (
 	REFERENCES customer(customer_id)
 );
 
+-- CREATING THE CUSTOMER TABLE:
 CREATE TABLE customer (
 	customer_id serial PRIMARY KEY,
 	username varchar(20) UNIQUE NOT NULL,
@@ -44,6 +46,7 @@ CREATE TABLE customer (
 	city varchar(255)
 );
 
+-- CREATING THE REVIEWS TABLE:
 CREATE TABLE reviews(
 	game_instance varchar(5),
 	reviewer_id varchar(8),
@@ -55,6 +58,7 @@ CREATE TABLE reviews(
 	REFERENCES review_game(reviewer_id)
 );
 
+-- CREATING THE GAME_CUSTOMER JUNCTION TABLE:
 CREATE TABLE game_customer (
 	game_instance varchar(5) PRIMARY KEY,
 	game_id serial,

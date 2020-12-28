@@ -128,14 +128,6 @@ INSERT INTO catalogue(game_title, developer, publisher, platform, game_status, r
     '2013-07-10', 
     'FNTSY'
 ), (
-    'F1 2020', 
-    'Codemasters', 
-    'Codemasters', 
-    'PC,XBox,Playstation', 
-    'upcoming', 
-    '2020-07-10', 
-    'RACNG'
-), (
     'The Crew 2', 
     'Ivory Tower', 
     'Ubisoft', 
