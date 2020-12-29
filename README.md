@@ -6,8 +6,9 @@ Video Game Inventory Management System
 - ~~Fix the platforms in videogame database;~~
 - ~~Change the genre_id;~~
 - ~~Fix reviews;~~
-- Add the sales;
+- ~~Add the sales;~~
 - ~~Add the games;~~
 - ~~Add the customers~~
-- Fix the game_review table and link it to the catalogue;
+- ~~Fix the game_review table and link it to the catalogue;~~
+- Do the per month analysis of sales;
 - Analysis table (???)
