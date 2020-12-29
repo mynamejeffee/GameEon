@@ -1,10 +1,11 @@
 -- GAMEEON: A VIDEO GAME INVENTORY MANAGEMENT SYSTEM FOR RETAILERS
 
 -- CREATING THE DATABASE
--- CREATE DATABASE GameEon;
-USE gameeon;
+CREATE DATABASE GameEon;
+USE GameEon;
+
 --SET FOREIGN_KEY_CHECKS = 0;
---DROP TABLE customer;
+--DROP TABLE customer_library, library_game, review_game, game_customer, reviews;
 
 -- CREATING THE GENRE TABLE:
 CREATE TABLE genre (
@@ -27,13 +28,6 @@ CREATE TABLE catalogue(
 );
 
 -- // THIS IS THE END POINT
--- CREATING THE REVIEW_GAME JUNCTION TABLE:
-CREATE TABLE review_game (
-	reviewer_id varchar(8) PRIMARY KEY,
-	customer_id serial,
-	FOREIGN KEY (customer_id)
-	REFERENCES customer(customer_id)
-);
 
 -- CREATING THE CUSTOMER TABLE:
 CREATE TABLE customer (
@@ -44,6 +38,22 @@ CREATE TABLE customer (
 	country varchar(255),
 	region_state varchar(255),
 	city varchar(255)
+);
+
+-- CREATING THE REVIEW_GAME JUNCTION TABLE:
+CREATE TABLE review_game (
+	reviewer_id varchar(8) PRIMARY KEY,
+	customer_id serial,
+	FOREIGN KEY (customer_id)
+	REFERENCES customer(customer_id)
+);
+
+-- CREATING THE GAME_CUSTOMER JUNCTION TABLE:
+CREATE TABLE game_customer (
+	game_instance varchar(5) PRIMARY KEY,
+	game_id serial,
+	FOREIGN KEY (game_id)
+	REFERENCES catalogue(game_id)
 );
 
 -- CREATING THE REVIEWS TABLE:
@@ -58,15 +68,35 @@ CREATE TABLE reviews(
 	REFERENCES review_game(reviewer_id)
 );
 
--- CREATING THE GAME_CUSTOMER JUNCTION TABLE:
-CREATE TABLE game_customer (
-	game_instance varchar(5) PRIMARY KEY,
+-- CREATING THE CUSTOMER_LIBRARY JUNCTION TABLE:
+CREATE TABLE customer_library (
+	lib_cust_id varchar(5) PRIMARY KEY,
+	customer_id serial,
+	FOREIGN KEY (customer_id)
+	REFERENCES customer(customer_id)
+);
+
+-- CREATING THE LIBRARY_GAME JUNCTION TABLE:
+CREATE TABLE library_game (
+	lib_cust_id varchar(5),
+	game_instance varchar(5),
+	FOREIGN KEY (lib_cust_id)
+	REFERENCES customer_library(lib_cust_id),
+	FOREIGN KEY (game_instance)
+	REFERENCES game_customer(game_instance)
+);
+
+-- CREATING THE SALES TABLE:
+CREATE TABLE sales (
+	sale_id int(5) PRIMARY KEY,
+	price float(6),
+	profit float(6),
 	game_id serial,
 	FOREIGN KEY (game_id)
 	REFERENCES catalogue(game_id)
 );
 
-/*
+/* ======================================= BACKUP =========================================
 CREATE TABLE reviews_to_customer(
 	reviewer_id varchar(8),
 	FOREIGN KEY (reviewer_id)

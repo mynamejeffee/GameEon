@@ -1,5 +1,6 @@
-USE gameeon;
+USE GameEon;
 
+-- INSERTING THE GENRES
 INSERT INTO genre(genre_id, genre_title) VALUES 
     ('HRROR', 'Horror'),
     ('CBPNK', 'Cyberpunk'),
@@ -21,7 +22,7 @@ INSERT INTO genre(genre_id, genre_title) VALUES
     ('MTPLR', 'Multiplayer');
 
 
--- Inserting the games
+-- INSERTING THE GAMES
 INSERT INTO catalogue(game_title, developer, publisher, platform, game_status, release_date, genre_id) VALUES
 (
     'Outlast',

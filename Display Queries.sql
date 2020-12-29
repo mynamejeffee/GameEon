@@ -1,4 +1,4 @@
-USE gameeon;
+USE GameEon;
 
 -- DISPLAYING THE LIST OF GAMES:
 SELECT * FROM catalogue;
@@ -39,16 +39,17 @@ SELECT COUNT(*) AS no_of_available_games FROM catalogue WHERE game_status = 'ava
 -- DISPLAYING THE TOTAL NUMBER OF UPCOMING GAMES:
 SELECT COUNT(*) AS no_of_upcoming_games FROM catalogue WHERE game_status = 'upcoming';
 
--- DISPLAYING GAMES DEVELOPED BY Red Barrels:
-SELECT developer, game_title FROM catalogue WHERE developer = 'Red Barrels';
+-- DISPLAYING GAMES DEVELOPED BY Valve:
+SELECT developer, game_title FROM catalogue WHERE developer = 'Valve';
 
-
+/*
 SELECT * FROM reviews;
 SELECT * FROM review_game;
 SELECT * FROM game_customer;
-
+*/
 -- DISPLAYING THE LIST OF CUSTOMERS:
 SELECT * FROM customer;
+SELECT * FROM library_game;
 
 -- DISPLAYING THE GAME TITLES AND GENRE:
 SELECT genre.genre_title genre, catalogue.game_title game_title
@@ -137,3 +138,118 @@ SELECT customer.username, reviews.stars, reviews.review, catalogue.game_title, g
 	INNER JOIN genre
 	ON catalogue.genre_id = genre.genre_id
 	ORDER BY stars;
+
+-- DISPLAYING THE REVIEWS FOR THE GAME Katana ZERO:
+SELECT customer.username, reviews.stars, reviews.review, catalogue.game_title, genre.genre_title
+	FROM reviews
+	INNER JOIN review_game
+	ON review_game.reviewer_id = reviews.reviewer_id
+	INNER JOIN customer
+	ON review_game.customer_id = customer.customer_id
+	INNER JOIN game_customer
+	ON game_customer.game_instance = reviews.game_instance 
+	INNER JOIN catalogue
+	ON catalogue.game_id = game_customer.game_id
+	INNER JOIN genre
+	ON catalogue.genre_id = genre.genre_id
+	WHERE game_title = 'Katana ZERO';
+
+-- DISPLAYING THE REVIEWS FOR THE HORROR GENRE:
+SELECT customer.username, reviews.stars, reviews.review, catalogue.game_title, genre.genre_title
+	FROM reviews
+	INNER JOIN review_game
+	ON review_game.reviewer_id = reviews.reviewer_id
+	INNER JOIN customer
+	ON review_game.customer_id = customer.customer_id
+	INNER JOIN game_customer
+	ON game_customer.game_instance = reviews.game_instance 
+	INNER JOIN catalogue
+	ON catalogue.game_id = game_customer.game_id
+	INNER JOIN genre
+	ON catalogue.genre_id = genre.genre_id
+	WHERE genre_title = 'Horror';
+
+-- DISPLAYING CUSTOMERS WHO DIDN'T LEAVE A TEXT REVIEW:
+SELECT customer.username, reviews.stars, reviews.review, catalogue.game_title
+	FROM reviews
+	INNER JOIN review_game
+	ON review_game.reviewer_id = reviews.reviewer_id
+	INNER JOIN customer
+	ON review_game.customer_id = customer.customer_id
+	INNER JOIN game_customer
+	ON game_customer.game_instance = reviews.game_instance 
+	INNER JOIN catalogue
+	ON catalogue.game_id = game_customer.game_id
+	INNER JOIN genre
+	ON catalogue.genre_id = genre.genre_id
+	WHERE reviews.review IS NULL;
+
+-- DISPLAYING LIST OF GAMES WITH REVIEWS:
+SELECT DISTINCT catalogue.game_title games_with_reviews
+	FROM reviews
+	INNER JOIN game_customer
+	ON game_customer.game_instance = reviews.game_instance 
+	INNER JOIN catalogue
+	ON catalogue.game_id = game_customer.game_id
+	WHERE (game_customer.game_instance) IN (reviews.game_instance) 
+	ORDER BY game_title;
+
+/*
+-- DISPLAYING LIST OF GAMES WITHOUT REVIEWS:
+SELECT DISTINCT catalogue.game_title games_without_reviews
+	FROM reviews
+	INNER JOIN game_customer
+	ON game_customer.game_instance = reviews.game_instance 
+	INNER JOIN catalogue
+	ON catalogue.game_id = game_customer.game_id
+	WHERE game_customer.game_instance NOT IN (reviews.game_instance) 
+	ORDER BY game_title;
+*/
+
+-- DISPLAYING THE SALES OF EACH GAME:
+SELECT catalogue.game_title, catalogue.developer, catalogue.publisher, sales.price price_$, sales.profit profit_$
+	FROM catalogue
+	JOIN sales
+	ON catalogue.game_id = sales.game_id
+	ORDER BY sales.price;
+
+-- DISPLAYING THE GAMES EACH CUSTOMER HAS BOUGHT:
+SELECT customer.username, catalogue.game_title
+	FROM customer
+	INNER JOIN customer_library
+	ON customer.customer_id = customer_library.customer_id
+	INNER JOIN library_game
+	ON customer_library.lib_cust_id = library_game.lib_cust_id
+	INNER JOIN game_customer
+	ON game_customer.game_instance = library_game.game_instance
+	INNER JOIN catalogue
+	ON catalogue.game_id = game_customer.game_id
+	ORDER BY username;
+
+-- DISPLAYING GAMES BOUGHT BY CUSTOMER taylor_swift<3<3:
+SELECT customer.username, catalogue.game_title
+	FROM customer
+	INNER JOIN customer_library
+	ON customer.customer_id = customer_library.customer_id
+	INNER JOIN library_game
+	ON customer_library.lib_cust_id = library_game.lib_cust_id
+	INNER JOIN game_customer
+	ON game_customer.game_instance = library_game.game_instance
+	INNER JOIN catalogue
+	ON catalogue.game_id = game_customer.game_id
+	WHERE customer.username = 'taylor_swift<3<3'
+	ORDER BY username;
+
+-- DISPLAYING THE LIST OF CUSTOMERS WHO BOUGHT THE GAME Katana ZERO:
+SELECT customer.username, catalogue.game_title
+	FROM customer
+	INNER JOIN customer_library
+	ON customer.customer_id = customer_library.customer_id
+	INNER JOIN library_game
+	ON customer_library.lib_cust_id = library_game.lib_cust_id
+	INNER JOIN game_customer
+	ON game_customer.game_instance = library_game.game_instance
+	INNER JOIN catalogue
+	ON catalogue.game_id = game_customer.game_id
+	WHERE game_customer.game_instance = 'GM007'
+	ORDER BY username;

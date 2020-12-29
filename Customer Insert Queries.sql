@@ -1,6 +1,6 @@
+USE GameEon;
 
-USE gameeon;
--- Inserting customers
+-- INSERTING THE CUSTOMERS
 INSERT INTO customer(username, e_mail, billing_info, country, region_state, city) VALUES
 (
     'my_name_is_jeff',
