@@ -5,7 +5,7 @@ CREATE DATABASE GameEon;
 USE GameEon;
 
 --SET FOREIGN_KEY_CHECKS = 0;
---DROP TABLE customer_library, library_game, review_game, game_customer, reviews;
+--DROP TABLE customer_library, library_game;
 
 -- CREATING THE GENRE TABLE:
 CREATE TABLE genre (
@@ -27,8 +27,6 @@ CREATE TABLE catalogue(
 	REFERENCES genre(genre_id)
 );
 
--- // THIS IS THE END POINT
-
 -- CREATING THE CUSTOMER TABLE:
 CREATE TABLE customer (
 	customer_id serial PRIMARY KEY,
@@ -40,16 +38,16 @@ CREATE TABLE customer (
 	city varchar(255)
 );
 
--- CREATING THE REVIEW_GAME JUNCTION TABLE:
-CREATE TABLE review_game (
+-- CREATING THE REVIEW CUSTOMER JUNCTION TABLE:
+CREATE TABLE review_customer (
 	reviewer_id varchar(8) PRIMARY KEY,
 	customer_id serial,
 	FOREIGN KEY (customer_id)
 	REFERENCES customer(customer_id)
 );
 
--- CREATING THE GAME_CUSTOMER JUNCTION TABLE:
-CREATE TABLE game_customer (
+-- CREATING THE GAME_GAMEINSTANCE JUNCTION TABLE:
+CREATE TABLE game_gameInstance (
 	game_instance varchar(5) PRIMARY KEY,
 	game_id serial,
 	FOREIGN KEY (game_id)
@@ -63,14 +61,14 @@ CREATE TABLE reviews(
 	stars tinyint(1),
 	review text,
 	FOREIGN KEY (game_instance) 
-	REFERENCES game_customer(game_instance),
+	REFERENCES game_gameInstance(game_instance),
 	FOREIGN KEY (reviewer_id) 
-	REFERENCES review_game(reviewer_id)
+	REFERENCES review_customer(reviewer_id)
 );
 
 -- CREATING THE CUSTOMER_LIBRARY JUNCTION TABLE:
 CREATE TABLE customer_library (
-	lib_cust_id varchar(5) PRIMARY KEY,
+	library_id varchar(5) PRIMARY KEY,
 	customer_id serial,
 	FOREIGN KEY (customer_id)
 	REFERENCES customer(customer_id)
@@ -78,12 +76,12 @@ CREATE TABLE customer_library (
 
 -- CREATING THE LIBRARY_GAME JUNCTION TABLE:
 CREATE TABLE library_game (
-	lib_cust_id varchar(5),
+	library_id varchar(5),
 	game_instance varchar(5),
-	FOREIGN KEY (lib_cust_id)
-	REFERENCES customer_library(lib_cust_id),
+	FOREIGN KEY (library_id)
+	REFERENCES customer_library(library_id),
 	FOREIGN KEY (game_instance)
-	REFERENCES game_customer(game_instance)
+	REFERENCES game_gameInstance(game_instance)
 );
 
 -- CREATING THE SALES TABLE:

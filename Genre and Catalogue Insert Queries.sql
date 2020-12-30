@@ -21,7 +21,6 @@ INSERT INTO genre(genre_id, genre_title) VALUES
     ('MLTRY', 'Military'),
     ('MTPLR', 'Multiplayer');
 
-
 -- INSERTING THE GAMES
 INSERT INTO catalogue(game_title, developer, publisher, platform, game_status, release_date, genre_id) VALUES
 (

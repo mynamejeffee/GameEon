@@ -1,5 +1,6 @@
 USE gameeon;
 
+-- INSERTING THE SALES DATA:
 INSERT INTO sales (sale_id, price, profit, game_id) VALUES
 	(1, 19.99, 17.991, 1), 
 	(2, 9.99, 8.991, 2), 
