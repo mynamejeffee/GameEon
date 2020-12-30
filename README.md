@@ -10,5 +10,4 @@ Video Game Inventory Management System
 - ~~Add the games;~~
 - ~~Add the customers~~
 - ~~Fix the game_review table and link it to the catalogue;~~
-- Do the per month analysis of sales;
-- Analysis table (???)
+- None
